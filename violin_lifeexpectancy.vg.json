@@ -1,0 +1,189 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "description": "A violin plot showing distribution of life expectancy in each continent.",
+
+    "width": 600,
+    "height": 400,
+    "padding": 5,
+
+    "title": {
+        "text": {"signal": "'Life Expectancy Distribution in Each Continent'"},
+        "anchor": "start",
+        "frame": "group"
+      },
+  
+    "config": {
+      "axisBand": {
+        "bandPosition": 1,
+        "tickExtra": true,
+        "tickOffset": 0
+      }
+    },
+  
+    "signals": [
+      { "name": "plotWidth", "value": 100 },
+      { "name": "height", "update": "(plotWidth + 10) * 7"},
+      { "name": "trim", "value": true,
+        "bind": {"input": "checkbox"} },
+      { "name": "bandwidth", "value": 0,
+        "bind": {"input": "range", "min": 0, "max": 3, "step": 0.25} }
+    ],
+  
+    "data": [
+      {
+        "name": "life_exp",
+        "url": "https://raw.githubusercontent.com/TohXiaoYing/FIT3179_DataVisProject2/main/data/js_owid_covid_country.json",
+        "transform": [
+          {
+            "type": "filter",
+            "expr": "datum.continent != null && datum.life_expectancy != null && datum.continent != '' && datum.life_expectancy != 0"
+          }
+        ]
+      },
+      {
+        "name": "density",
+        "source": "life_exp",
+        "transform": [
+          {
+            "type": "kde",
+            "field": "life_expectancy",
+            "groupby": ["continent"],
+            "bandwidth": {"signal": "bandwidth"},
+            "extent": {"signal": "trim ? null : [50, 90]"}
+          }
+        ]
+      },
+      {
+        "name": "stats",
+        "source": "life_exp",
+        "transform": [
+          {
+            "type": "aggregate",
+            "groupby": ["continent"],
+            "fields": ["life_expectancy", "life_expectancy", "life_expectancy"],
+            "ops": ["q1", "median", "q3"],
+            "as": ["q1", "median", "q3"]
+          }
+        ]
+      }
+    ],
+  
+    "scales": [
+      {
+        "name": "layout",
+        "type": "band",
+        "range": "height",
+        "domain": {
+            "data": "life_exp", 
+            "field": "continent",
+            "sort": {"order": "ascending"}
+        }
+      },
+      {
+        "name": "xscale",
+        "type": "linear",
+        "range": "width", "round": true,
+        "domain": {"data": "life_exp", "field": "life_expectancy"},
+        "domainMin": 50,
+        "zero": false, "nice": true
+      },
+      {
+        "name": "hscale",
+        "type": "linear",
+        "range": [0, {"signal": "plotWidth"}],
+        "domain": {"data": "density", "field": "density"}
+      },
+      {
+        "name": "color",
+        "type": "ordinal",
+        "domain": {"data": "life_exp", "field": "continent", "sort": {"order": "ascending"}},
+        "range": "category"
+      }
+    ],
+  
+    "axes": [
+      {"orient": "bottom", "scale": "xscale", "zindex": 1},
+      {"orient": "left", "scale": "layout", "tickCount": 5, "zindex": 1}
+    ],
+  
+    "marks": [
+      {
+        "type": "group",
+        "from": {
+          "facet": {
+            "data": "density",
+            "name": "violin",
+            "groupby": "continent"
+          }
+        },
+  
+        "encode": {
+          "enter": {
+            "yc": {"scale": "layout", "field": "continent", "band": 0.5},
+            "height": {"signal": "plotWidth"},
+            "width": {"signal": "width"}
+          }
+        },
+  
+        "data": [
+          {
+            "name": "summary",
+            "source": "stats",
+            "transform": [
+              {
+                "type": "filter",
+                "expr": "datum.continent === parent.continent"
+              }
+            ]
+          }
+        ],
+  
+        "marks": [
+          {
+            "type": "area",
+            "from": {"data": "violin"},
+            "encode": {
+              "enter": {
+                "fill": {"scale": "color", "field": {"parent": "continent"}}
+              },
+              "update": {
+                "x": {"scale": "xscale", "field": "value"},
+                "yc": {"signal": "plotWidth / 2"},
+                "height": {"scale": "hscale", "field": "density"}
+              }
+            }
+          },
+          {
+            "type": "rect",
+            "from": {"data": "summary"},
+            "encode": {
+              "enter": {
+                "fill": {"value": "black"},
+                "height": {"value": 2}
+              },
+              "update": {
+                "x": {"scale": "xscale", "field": "q1"},
+                "x2": {"scale": "xscale", "field": "q3"},
+                "yc": {"signal": "plotWidth / 2"}
+              }
+            }
+          },
+          {
+            "type": "rect",
+            "from": {"data": "summary"},
+            "encode": {
+              "enter": {
+                "fill": {"value": "black"},
+                "width": {"value": 2},
+                "height": {"value": 8}
+              },
+              "update": {
+                "x": {"scale": "xscale", "field": "median"},
+                "yc": {"signal": "plotWidth / 2"}
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }

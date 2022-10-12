@@ -1,0 +1,113 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "description": "A top-k bar chart ranking total cases by countries.",
+    "width": 500,
+    "height": 410,
+    "padding": 5,
+    "autosize": "fit",
+  
+    "signals": [
+      {
+        "name": "k", "value": 20,
+        "bind": {"input": "range", "min": 10, "max": 50, "step": 1}
+      }
+    ],
+  
+    "title": {
+      "text": {"signal": "'Top Country by Total Cases by 24 September 2022'"},
+      "anchor": "start",
+      "frame": "group"
+    },
+  
+    "data": [
+      {
+        "name": "source",
+        "url": "https://raw.githubusercontent.com/TohXiaoYing/FIT3179_DataVisProject2/main/data/js_owid_covid_country.json",
+        "transform": [
+          {
+            "type": "filter",
+            "expr": "datum.location != null && datum.total_cases != null && datum.location != '' && datum.total_cases != '' && datum.location != 'World'"
+          }
+        ]
+      },
+      {
+        "name": "ranks",
+        "source": "source",
+        "transform": [
+          {
+            "type": "window",
+            "sort": {"field": "total_cases", "order": "descending"},
+            "ops": ["row_number"], "as": ["rank"]
+          }
+        ]
+      },
+      {
+        "name": "countries",
+        "source": "source",
+        "transform": [
+          {
+            "type": "lookup",
+            "from": "ranks",
+            "key": "location",
+            "values": ["rank"],
+            "fields": ["location"]
+          },
+          {
+            "type": "formula",
+            "as": "Category",
+            "expr": "datum.rank < k ? datum.location : 'All Others'"
+          }
+        ]
+      }
+    ],
+  
+    "marks": [
+      {
+        "type": "rect",
+        "from": {"data": "countries"},
+        "encode": {
+          "update": {
+            "x": {"scale": "x", "value": 0},
+            "x2": {"scale": "x", "field": "total_cases"},
+            "y": {"scale": "y", "field": "Category"},
+            "height": {"scale": "y", "band": 1},
+            "tooltip": {"signal": "datum.total_cases"}
+          }
+        }
+      }
+    ],
+  
+    "scales": [
+      {
+        "name": "x",
+        "type": "linear",
+        "domain": {"data": "countries", "field": "total_cases"},
+        "range": "width",
+        "nice": true
+      },
+      {
+        "name": "y",
+        "type": "band",
+        "domain": {
+          "data": "countries", "field": "Category",
+          "sort": {"op": "max", "field": "total_cases", "order": "descending"}
+        },
+        "range": "height",
+        "padding": 0.1
+      }
+    ],
+  
+    "axes": [
+      {
+        "scale": "x",
+        "orient": "bottom",
+        "format": "d",
+        "tickCount": 5
+      },
+      {
+        "scale": "y",
+        "orient": "left"
+      }
+    ]
+  }
+  

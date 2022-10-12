@@ -1,0 +1,139 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/TohXiaoYing/FIT3179_DataVisProject2/main/data/owid_covid_ALL.csv"
+    },
+    "title": "New Cases in Each Continent from 2020 to 24 September 2022",
+    "params": [
+        {
+        "name": "Continent_selection",
+        "bind": {
+        "input": "select",
+        "options": [
+            null,
+            "Africa",
+            "Asia",
+            "Europe",
+            "North America",
+            "Oceania",
+            "South America"
+            ],
+        "labels":[
+            "Show All",
+            "Africa",
+            "Asia",
+            "Europe",
+            "North America",
+            "Oceania",
+            "South America"
+            ],
+      "name": "Continent Selection: "
+        }
+      }
+    ],
+    "transform": [
+        {"filter":"datum.continent != '' "},
+        {
+            "filter": "Continent_selection == null || datum.continent == Continent_selection"
+        }
+      ],
+    "vconcat": [
+        {
+            "width": 600,
+            "height": 400,
+            "encoding": {
+                "x": {
+                    "field": "conv_date", 
+                    "timeUnit": "yearmonthdate", 
+                    "scale": {"domain": {"param": "brush"}},
+                    "axis": {"title": "","domain": false,  "tickSize": 0}},
+                "y": {
+                    "aggregate": "sum", "field": "new_cases"
+                },
+                "tooltip":[
+                    {"field": "conv_date", "timeUnit": "yearmonthdate",  "title": "Date"},
+                    {"field": "new_cases", "aggregate": "sum", "title": "New Cases"}
+                ],
+                "color": {
+                    "field": "continent", 
+                    "type": "nominal",
+                    "scale": {
+                        "domain": [
+                            "Africa",
+                            "Asia",
+                            "Europe",
+                            "North America",
+                            "Oceania",
+                            "South America"
+                        ],
+                        "range" :[
+                            "#4c78ab",
+                            "#f58518",
+                            "#e45756",
+                            "#83bcb6",
+                            "#54a24b",
+                            "#f2cf5b"
+                        ]
+                    }
+                }
+                    
+            },
+            "layer": [
+                {
+                    "mark": "area"
+                },
+                {
+                    "transform": [
+                        {"aggregate": [{
+                            "op": "sum",
+                            "field": "new_cases",
+                            "as": "sum_vacc"
+                        }],
+                        "groupby": ["continent"]
+                        },
+                        {
+                            "window": [{
+                                "op": "rank", "as": "rank"
+                            }],
+                            "sort": [{
+                                "field": "sum_vacc", "order":"descending"
+                            }]
+                        },
+                        {"filter": "datum.rank == 1"}
+                    ],
+                    "mark":{
+                        "type": "text",
+                        "align": "left",
+                        "baseline": "middle",
+                        "dx": 4,
+                        "dy": 4
+                    },
+                    "encoding": {
+                        "text": {"field": "new_cases", "type": "quantitative", "aggregate": "sum"}
+                    }
+                }
+            ]
+        },
+        {
+            "width": 600,
+            "height": 60,
+            "mark": "line",
+            "params": [
+                {"name": "brush", 
+                "select": {"type": "interval","encodings": ["x"]}}
+                ],                
+            "encoding": {
+                "x": {
+                    "timeUnit": "yearmonthdate",
+                    "field": "conv_date"
+                  },
+                "y": {
+                    "aggregate": "sum",
+                    "field": "new_cases",
+                    "type": "quantitative",
+                    "axis": {"tickCount": 3, "grid": false}
+                }
+            }
+        }
+    ]
+}
