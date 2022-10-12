@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Multiple Visualisations | An Example</title>
+  <title>Covid-19 Analysis</title>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -30,16 +30,7 @@
 
     <!-- pure grid group -->
     <div class="pure-g">
-      <div class="pure-u-1-1">
-        <h1>Covid-19 Analysis</h1>
-        <p>An analysis of Covid-19 statistic across the world.</p>
-      </div>
-    </div>
-    <!-- end pure grid group -->
-
-    <!-- pure grid group -->
-    <div class="pure-g">
-        <div class="pure-u-1-2">
+        <div class="pure-u-1-1">
           <div id="vis1" class="vis-container"></div>
         </div>
       </div>
@@ -47,7 +38,7 @@
 
     <!-- pure grid group -->
     <div class="pure-g">
-        <div class="pure-u-1-3">
+        <div class="pure-u-1-2">
           <div class="description description-left">
             <p>The map above illustrates total cases by population across the world.
                 The graph at the side displays top 50 countries with most total cases accumulated by 
@@ -62,10 +53,10 @@
 
     <!-- pure grid group -->
     <div class="pure-g">
-        <div class="pure-u-2-4">
+        <div class="pure-u-2-3">
           <div id="vis3" class="vis-container"></div>
         </div>
-        <div class="pure-u-1-4">
+        <div class="pure-u-1-3">
           <div class="description description-right">
             <h2>New Cases and Deaths from year 2020 to 24 September 2022</h2>
             <p>The stream graph shows the new cases each continent had per day from year 2020 to the latest date 
@@ -81,10 +72,10 @@
 
     <!-- pure grid group -->
     <div class="pure-g">
-        <div class="pure-u-2-5">
+        <div class="pure-u-2-4">
           <div id="vis4" class="vis-container"></div>
         </div>
-        <div class="pure-u-1-5">
+        <div class="pure-u-1-4">
           <div class="description description-right">
             <p>The stream graph shows the new deaths each continent had per day from year 2020 to the latest date 
                 which is 24 September 2022. 
@@ -99,13 +90,13 @@
 
     <!-- pure grid group -->
     <div class="pure-g">
-        <div class="pure-u-1-6">
+        <div class="pure-u-1-5">
           <div class="description description-right">
             <h2>Life Expectancy Distribution of Each Continent by 24 September 2022</h2>
             <p>The violin plot display the distribution of life expectancy of each continent. 
             </p>
           </div>
-          <div class="pure-u-2-6">
+          <div class="pure-u-2-5">
             <div id="vis5" class="vis-container"></div>
           </div>
         </div>
@@ -115,7 +106,7 @@
 
     <!-- pure grid group -->
     <div class="pure-g">
-        <div class="pure-u-1-7">
+        <div class="pure-u-1-6">
           <div class="description description-left">
             <h2>Gross Domestic Product per Capita by Country</h2>
             <p>The graph shows gdp per capita of each country, each categorized into their specific continent. 
@@ -123,7 +114,7 @@
             </p>
           </div>
         </div>
-        <div class="pure-u-1-7">
+        <div class="pure-u-1-6">
           <div id="vis6" class="vis-container"></div>
         </div>
       </div>
@@ -148,11 +139,11 @@
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#vis3', specVis1, { "actions": false }).then(function (result) {
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#vis4', specVis2, { "actions": false }).then(function (result) {
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
