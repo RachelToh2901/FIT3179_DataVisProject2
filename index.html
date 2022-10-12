@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Multiple Visualisations | An Example</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+
+</head>
+
+<body>
+
+  <div class="page">
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1">
+        <h1>Covid-19 Analysis</h1>
+        <p>An analysis of Covid-19 statistic across the world.</p>
+      </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-2">
+          <div id="vis1" class="vis-container"></div>
+        </div>
+      </div>
+      <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-3">
+          <div class="description description-left">
+            <p>The map above illustrates total cases by population across the world.
+                The graph at the side displays top 50 countries with most total cases accumulated by 
+                24 September 2022. </p>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div id="vis2" class="vis-container"></div>
+        </div>
+      </div>
+      <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-2-4">
+          <div id="vis3" class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-4">
+          <div class="description description-right">
+            <h2>New Cases and Deaths from year 2020 to 24 September 2022</h2>
+            <p>The stream graph shows the new cases each continent had per day from year 2020 to the latest date 
+                which is 24 September 2022. 
+                Continent statistic can be shown by using the filter selection. 
+                The small graph below can be highlighted to get a closer look to the data. 
+            </p>
+          </div>
+        </div>
+  
+      </div>
+      <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-2-5">
+          <div id="vis4" class="vis-container"></div>
+        </div>
+        <div class="pure-u-1-5">
+          <div class="description description-right">
+            <p>The stream graph shows the new deaths each continent had per day from year 2020 to the latest date 
+                which is 24 September 2022. 
+                Continent statistic can be shown by using the filter selection. 
+                The small graph below can be highlighted to get a closer look to the data. 
+            </p>
+          </div>
+        </div>
+  
+      </div>
+      <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-6">
+          <div class="description description-right">
+            <h2>Life Expectancy Distribution of Each Continent by 24 September 2022</h2>
+            <p>The violin plot display the distribution of life expectancy of each continent. 
+            </p>
+          </div>
+          <div class="pure-u-2-6">
+            <div id="vis5" class="vis-container"></div>
+          </div>
+        </div>
+  
+      </div>
+      <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g">
+        <div class="pure-u-1-7">
+          <div class="description description-left">
+            <h2>Gross Domestic Product per Capita by Country</h2>
+            <p>The graph shows gdp per capita of each country, each categorized into their specific continent. 
+                Again continent can be filter out using the selection filter. 
+            </p>
+          </div>
+        </div>
+        <div class="pure-u-1-7">
+          <div id="vis6" class="vis-container"></div>
+        </div>
+      </div>
+      <!-- end pure grid group -->
+
+
+  </div> <!-- end page -->
+
+  <script type="text/javascript">
+    var specVis1 = "./map.vg.json";
+    var specVis2 = "./topkbar_totalcases.vg.json";
+    var specVis3 = "./interactive_streamline_newcases.vg.json"
+    var specVis4 = "./interactive_streamline_newdeaths.vg.json"
+    var specVis5 = "./violin_lifeexpectancy.vg.json"
+    var specVis6 = "./radial_totalgdp.vg.json"
+
+    vegaEmbed('#vis1', specVis1, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis1, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis5', specVis5, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis6', specVis6, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+  </script>
+</body>
+
+</html>
