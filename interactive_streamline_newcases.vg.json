@@ -52,7 +52,7 @@
                 },
                 "tooltip":[
                     {"field": "conv_date", "timeUnit": "yearmonthdate",  "title": "Date"},
-                    {"field": "new_cases", "aggregate": "sum", "title": "New Deaths"}
+                    {"field": "new_cases", "aggregate": "sum", "title": "New Cases"}
                     
                 ],
                 "color": {
