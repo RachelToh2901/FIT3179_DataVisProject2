@@ -156,7 +156,7 @@
             "encode": {
               "enter": {
                 "fill": {"value": "black"},
-                "height": {"value": 2}
+                "width": {"value": 2}
               },
               "update": {
                 "y": {"scale": "yscale", "field": "q1"},
@@ -171,8 +171,8 @@
             "encode": {
               "enter": {
                 "fill": {"value": "black"},
-                "width": {"value": 2},
-                "height": {"value": 8}
+                "height": {"value": 2},
+                "width": {"value": 8}
               },
               "update": {
                 "y": {"scale": "yscale", "field": "median"},
