@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "description": "Radial Chart showing total gdp per capita of each country categorized by continents",
-    "width": 600,
+    "width": "container",
     "height":600,
     "data": {"url": "https://raw.githubusercontent.com/TohXiaoYing/FIT3179_DataVisProject2/main/data/owid_covid_country.csv"},
     "params": [
