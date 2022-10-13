@@ -39,8 +39,9 @@
       ],
     "vconcat": [
         {
-            "width": 600,
+            "width": 550,
             "height": 400,
+            "mark": "area",
             "encoding": {
                 "x": {
                     "field": "conv_date", 
@@ -77,45 +78,10 @@
                     }
                 }
                     
-            },
-            "layer": [
-                {
-                    "mark": "area"
-                },
-                {
-                    "transform": [
-                        {"aggregate": [{
-                            "op": "sum",
-                            "field": "new_cases",
-                            "as": "sum_vacc"
-                        }],
-                        "groupby": ["continent"]
-                        },
-                        {
-                            "window": [{
-                                "op": "rank", "as": "rank"
-                            }],
-                            "sort": [{
-                                "field": "sum_vacc", "order":"descending"
-                            }]
-                        },
-                        {"filter": "datum.rank == 1"}
-                    ],
-                    "mark":{
-                        "type": "text",
-                        "align": "left",
-                        "baseline": "middle",
-                        "dx": 4,
-                        "dy": 4
-                    },
-                    "encoding": {
-                        "text": {"field": "new_cases", "type": "quantitative", "aggregate": "sum"}
-                    }
-                }
-            ]
+            }
         },
         {
-            "width": 600,
+            "width": 550,
             "height": 60,
             "mark": "line",
             "params": [
