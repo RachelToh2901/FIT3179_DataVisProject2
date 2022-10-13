@@ -2,8 +2,8 @@
     "$schema": "https://vega.github.io/schema/vega/v5.json",
     "description": "A violin plot showing distribution of life expectancy in each continent.",
 
-    "width": 600,
-    "height": 400,
+    "width": 750,
+    "height": 500,
     "padding": 5,
 
     "title": {

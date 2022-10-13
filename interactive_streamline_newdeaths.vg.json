@@ -3,7 +3,6 @@
     "data": {
         "url": "https://raw.githubusercontent.com/TohXiaoYing/FIT3179_DataVisProject2/main/data/owid_covid_ALL.csv"
     },
-    "title": "New Death Cases in Each Continent from 2020 to 24 September 2022",
     "params": [
         {
         "name": "Continent_selection",

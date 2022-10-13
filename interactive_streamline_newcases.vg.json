@@ -3,7 +3,6 @@
     "data": {
         "url": "https://raw.githubusercontent.com/TohXiaoYing/FIT3179_DataVisProject2/main/data/owid_covid_ALL.csv"
     },
-    "title": "New Cases in Each Continent from 2020 to 24 September 2022",
     "params": [
         {
         "name": "Continent_selection",
@@ -39,7 +38,7 @@
       ],
     "vconcat": [
         {
-            "width": 550,
+            "width": 500,
             "height": 400,
             "mark": "area",
             "encoding": {
@@ -81,7 +80,7 @@
             }
         },
         {
-            "width": 550,
+            "width": 500,
             "height": 60,
             "mark": "line",
             "params": [
