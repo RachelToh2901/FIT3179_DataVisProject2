@@ -6,11 +6,6 @@
     "height": 400,
     "padding": 5,
 
-    "title": {
-        "text": {"signal": "'Life Expectancy Distribution in Each Continent'"},
-        "anchor": "start",
-        "frame": "group"
-      },
   
     "config": {
       "axisBand": {
