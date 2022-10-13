@@ -71,5 +71,10 @@
             {"field": "location", "type": "nominal", "title": "Country"},
             {"field": "gdp_per_capita", "type": "quantitative", "title": "GDP per Capita"}
         ]
-    }
+    },
+    "config": {
+        "view": {
+           "stroke": "transparent"
+        }
+      }
   }

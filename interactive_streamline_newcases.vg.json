@@ -38,7 +38,7 @@
       ],
     "vconcat": [
         {
-            "width": 500,
+            "width": 520,
             "height": 400,
             "mark": "area",
             "encoding": {
@@ -46,9 +46,9 @@
                     "field": "conv_date", 
                     "timeUnit": "yearmonthdate", 
                     "scale": {"domain": {"param": "brush"}},
-                    "axis": {"title": "","domain": false,  "tickSize": 0}},
+                    "axis": {"title": "","domain": false,  "tickSize": 0, "grid": false}},
                 "y": {
-                    "aggregate": "sum", "field": "new_cases"
+                    "aggregate": "sum", "field": "new_cases", "title": "New Cases"
                 },
                 "tooltip":[
                     {"field": "conv_date", "timeUnit": "yearmonthdate",  "title": "Date"},
@@ -80,7 +80,7 @@
             }
         },
         {
-            "width": 500,
+            "width": 520,
             "height": 60,
             "mark": "line",
             "params": [
@@ -90,13 +90,16 @@
             "encoding": {
                 "x": {
                     "timeUnit": "yearmonthdate",
-                    "field": "conv_date"
+                    "field": "conv_date",
+                    "axis":{"grid": false},
+                    "title": "Date"
                   },
                 "y": {
                     "aggregate": "sum",
                     "field": "new_cases",
                     "type": "quantitative",
-                    "axis": {"tickCount": 3, "grid": false}
+                    "axis": {"tickCount": 3, "grid": false},
+                    "title" : ""
                 }
             }
         }

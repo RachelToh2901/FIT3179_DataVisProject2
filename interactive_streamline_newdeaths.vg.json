@@ -46,9 +46,9 @@
                     "field": "conv_date", 
                     "timeUnit": "yearmonthdate", 
                     "scale": {"domain": {"param": "brush"}},
-                    "axis": {"title": "","domain": false,  "tickSize": 0}},
+                    "axis": {"title": "","domain": false,  "tickSize": 0, "grid": false}},
                 "y": {
-                    "aggregate": "sum", "field": "new_deaths"
+                    "aggregate": "sum", "field": "new_deaths", "title": "New Deaths"
                 },
                 "tooltip":[
                     {"field": "conv_date", "timeUnit": "yearmonthdate",  "title": "Date"},
@@ -91,13 +91,16 @@
             "encoding": {
                 "x": {
                     "timeUnit": "yearmonthdate",
-                    "field": "conv_date"
+                    "field": "conv_date",
+                    "axis":{"grid": false},
+                    "title": "Date"
                   },
                 "y": {
                     "aggregate": "sum",
                     "field": "new_deaths",
                     "type": "quantitative",
-                    "axis": {"tickCount": 3, "grid": false}
+                    "axis": {"tickCount": 3, "grid": false},
+                    "title": ""
                 }
             }
         }
