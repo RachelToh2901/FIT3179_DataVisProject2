@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega/v5.json",
     "description": "A top-k bar chart ranking total cases by countries.",
-    "width": 500,
+    "width": 650,
     "height": 400,
     "padding": 5,
     "autosize": "fit",
