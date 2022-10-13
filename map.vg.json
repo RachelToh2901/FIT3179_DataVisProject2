@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "COVID-19 Cases by Population for Each Country in 24 September 2022",
-    "width": 800,
+    "width": "container",
     "height": 500,    
     "projection": {"type": "equalEarth"},
 
