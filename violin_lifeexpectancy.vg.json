@@ -2,8 +2,8 @@
     "$schema": "https://vega.github.io/schema/vega/v5.json",
     "description": "A violin plot showing distribution of life expectancy in each continent.",
 
-    "width": 600,
-    "height": 400,
+    "width": 800,
+    "height": 500,
     "padding": 5,
 
     "title": {
@@ -21,8 +21,8 @@
     },
   
     "signals": [
-      { "name": "plotWidth", "value": 100 },
-      { "name": "height", "update": "(plotWidth + 10) * 7"},
+      { "name": "plotWidth", "update": "(width - 100)/6" },
+      { "name": "height", "update": "height * 1"},
       { "name": "trim", "value": true,
         "bind": {"input": "checkbox"} },
       { "name": "bandwidth", "value": 0,
@@ -72,7 +72,7 @@
       {
         "name": "layout",
         "type": "band",
-        "range": "height",
+        "range": "width",
         "domain": {
             "data": "life_exp", 
             "field": "continent",
@@ -80,12 +80,13 @@
         }
       },
       {
-        "name": "xscale",
+        "name": "yscale",
         "type": "linear",
-        "range": "width", "round": true,
+        "range": "height", "round": true,
         "domain": {"data": "life_exp", "field": "life_expectancy"},
         "domainMin": 50,
-        "zero": false, "nice": true
+        "zero": false, "nice": true,
+        "reverse": false
       },
       {
         "name": "hscale",
@@ -102,8 +103,8 @@
     ],
   
     "axes": [
-      {"orient": "bottom", "scale": "xscale", "zindex": 1},
-      {"orient": "left", "scale": "layout", "tickCount": 5, "zindex": 1}
+      {"orient": "bottom", "scale": "layout", "zindex": 1},
+      {"orient": "left", "scale": "yscale", "zindex": 1}
     ],
   
     "marks": [
@@ -119,9 +120,9 @@
   
         "encode": {
           "enter": {
-            "yc": {"scale": "layout", "field": "continent", "band": 0.5},
-            "height": {"signal": "plotWidth"},
-            "width": {"signal": "width"}
+            "xc": {"scale": "layout", "field": "continent", "band": 0.5},
+            "width": {"signal": "plotWidth"},
+            "height": {"signal": "height"}
           }
         },
   
@@ -144,12 +145,13 @@
             "from": {"data": "violin"},
             "encode": {
               "enter": {
+                "orient": {"value": "horizontal"},
                 "fill": {"scale": "color", "field": {"parent": "continent"}}
               },
               "update": {
-                "x": {"scale": "xscale", "field": "value"},
-                "yc": {"signal": "plotWidth / 2"},
-                "height": {"scale": "hscale", "field": "density"}
+                "y": {"scale": "yscale", "field": "value"},
+                "xc": {"signal": "plotWidth / 2"},
+                "width": {"scale": "hscale", "field": "density"}
               }
             }
           },
@@ -162,9 +164,9 @@
                 "height": {"value": 2}
               },
               "update": {
-                "x": {"scale": "xscale", "field": "q1"},
-                "x2": {"scale": "xscale", "field": "q3"},
-                "yc": {"signal": "plotWidth / 2"}
+                "y": {"scale": "yscale", "field": "q1"},
+                "y2": {"scale": "yscale", "field": "q3"},
+                "xc": {"signal": "plotWidth / 2"}
               }
             }
           },
@@ -178,8 +180,8 @@
                 "height": {"value": 8}
               },
               "update": {
-                "x": {"scale": "xscale", "field": "median"},
-                "yc": {"signal": "plotWidth / 2"}
+                "y": {"scale": "yscale", "field": "median"},
+                "xc": {"signal": "plotWidth / 2"}
               }
             }
           }
