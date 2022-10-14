@@ -43,7 +43,7 @@
                 }
                 
             ],
-            "mark": {"type": "geoshape", "stroke": "black"},
+            "mark": {"type": "geoshape"},
             "encoding": {
                 "color": {
                 "field": "total_cases_per_million",
