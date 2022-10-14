@@ -16,7 +16,7 @@ body {
 }
 
 #title-header{
-    background-color: rgb(233, 156, 40);
+    background-color: rgb(238, 127, 1);
 }
 
 #header{
@@ -82,12 +82,12 @@ h1 {
 
 .highlighted_good{
     font-weight: 600;
-    color: rgb(224, 144, 24);
-    font-size: large;
+    color: rgb(238, 127, 1);
+    font-size:larger
 }
 
 .highlighted_bad{
     font-weight: 600;
     color: rgb(25, 123, 235);
-    font-size: large;
+    font-size: larger;
 }
