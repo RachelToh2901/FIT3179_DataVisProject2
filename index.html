@@ -16,7 +16,7 @@
   <!-- Google font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
@@ -28,34 +28,64 @@
 
   <div class="page">
 
-    <div class="page">
 
-        <!-- pure grid group -->
-        <div class="pure-g-small">
-          <div class="pure-u-1-1">
-            <div class="title">
-                <h1>Multiple Visualisations</h1>
-                <p>An analysis of Covid-19 statistic across the world from year 2020 to September 2022.</p>
-            </div>
-          </div>
+    <!-- pure grid group -->
+    <div class="pure-g-small" id = "title-header">
+      <div class="pure-u-1 pure-u-md-3-24"></div>
+        <div class="pure-u-1 pure-u-md-18-24" id = "title">
+          <h1>Covid-19 Statistic Analysis</h1>
         </div>
-        <!-- end pure grid group -->
+        <div class="pure-u-1 pure-u-md-3-24"></div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g-mid">
+      <div class="pure-u-1 pure-u-md-3-24"></div>
+        <div class="pure-u-1 pure-u-md-18-24" id = "title">
+          <p>An analysis of Covid-19 statistic across the world from year 2020 to September 2022.</p>
+        </div>
+        <div class="pure-u-1 pure-u-md-3-24"></div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g-small" id = "header">
+      <div class="pure-u-1 pure-u-md-3-24"></div>
+        <div class="pure-u-1 pure-u-md-18-24" id = "title">
+          <h2>Covid-19 Cases by Population for Each Country by 24 September 2022</h2>
+        </div>
+        <div class="pure-u-1 pure-u-md-3-24"></div>
+    </div>
+    <!-- end pure grid group -->
 
     <!-- pure grid group -->
     <div class="pure-g-small">
-        <div class="pure-u-1-2">
-          <div id="vis1" class="vis-container-small"></div>
+        <div class="pure-u-1-1">
+          <div id="vis1" class="vis-container-small" align="center"></div>
         </div>
       </div>
       <!-- end pure grid group -->
 
     <!-- pure grid group -->
     <div class="pure-g">
-        <div class="pure-u-1-3">
+        <div class="pure-u-2-3">
           <div class="description description-left">
-            <p>The map above illustrates total cases by population across the world.
-                The graph at the side displays top 50 countries with most total cases accumulated by 
-                24 September 2022. </p>
+            <p>The map above illustrates total cases by 1 million population across the world by 24 September 2022. 
+              We can see that countries like <span class = "highlighted_good"> United States of America, Australia, Argentina </span>, has 
+              <span class = "highlighted_good">high</span> ratio of total cases so far per 1 million population of <span class = "highlighted_good">more than 200,000 </span>
+              cases per 1 million population.
+              On the other hand, most countries in <span class = "highlighted_bad">Africa</span> seem to have <span class = "highlighted_bad">low</span> ratio of total cases by 
+              1 million population. The lowest in Africa is <span class = "highlighted_bad">Niger</span> which has only <span class = "highlighted_bad">372</span> cases per 1 million population. 
+              
+            </p>
+            <p>
+                The graph at the side displays top 50 countries with most cases accumulated by 24 September 2022. 
+                Despite some countries having high value for total cases by population, their total cases overall in fact may not be great. 
+                This graph displays using absolute value of total cases, different than the map above which shows normalized data. 
+                <span class = "highlighted_good">United States of America, India, and France</span> have the <span class = "highlighted_good">most cases</span>
+                among all countries in the world, where <span class = "highlighted_good">United States of America</span> having <span class = "highlighted_good">96,065,161</span> cases in total.  
+              </p>
           </div>
         </div>
         <div class="pure-u-1-3">
@@ -65,70 +95,137 @@
       <!-- end pure grid group -->
 
     <!-- pure grid group -->
+    <div class="pure-g-small" id = "header">
+      <div class="pure-u-1 pure-u-md-3-24"></div>
+        <div class="pure-u-1 pure-u-md-18-24" id = "title">
+          <h2>New Cases and Deaths from year 2020 to 24 September 2022</h2>
+        </div>
+        <div class="pure-u-1 pure-u-md-3-24"></div>
+    </div>
+    <!-- end pure grid group -->
+
+
+    
+
+    <!-- pure grid group -->
+  <div class="pure-g-small">
+    <div class="pure-u-1 pure-u-md-3-24"></div>
+      <div class="pure-u-1 pure-u-md-18-24" id = "title">
+        <p>
+          The stream graph shows the <span class = "highlighted_good">new cases</span> each continent had per day from year 2020 to 24 September 2022. 
+        </p>
+        <p>
+          The highest amount of cases happened during <span class = "highlighted_good"> January 2022</span>, which is around 
+          <span class = "highlighted_good">4 million</span>. Before that, the total amount of cases were only below 1 million. But after 
+          <span class = "highlighted_bad"> March 2022</span>, the number of cases started to decrease gradually and drop 
+          till<span class = "highlighted_bad"> below 1.5 million. </span>
+        </p>
+      </div>
+      <div class="pure-u-1 pure-u-md-3-24"></div>
+  </div>
+  <!-- end pure grid group -->
+
+    <!-- pure grid group -->
     <div class="pure-g-small">
-        <div class="pure-u-2-4">
-          <div id="vis3" class="vis-container"></div>
-        </div>
-        <div class="pure-u-1-4">
-          <div class="description description-right">
-            <h2>New Cases and Deaths from year 2020 to 24 September 2022</h2>
-            <p>The stream graph shows the new cases each continent had per day from year 2020 to the latest date 
-                which is 24 September 2022. 
-                Continent statistic can be shown by using the filter selection. 
-                The small graph below can be highlighted to get a closer look to the data. 
-            </p>
-          </div>
-        </div>
-  
+      <div class="pure-u-1-1">
+        <div id="vis3" class="vis-container-small" align="center"></div>
       </div>
-      <!-- end pure grid group -->
+    </div>
+    <!-- end pure grid group -->
+
+  <!-- pure grid group -->
+  <div class="pure-g-small">
+    <div class="pure-u-1 pure-u-md-3-24"></div>
+      <div class="pure-u-1 pure-u-md-18-24" id = "title">
+        <p>
+          The stream graph shows the <span class = "highlighted_bad">new deaths</span> each continent had per day from year 2020 to 24 September 2022. 
+        </p>
+        <p>
+          The highest amount of deaths happened during<span class = "highlighted_good">January 2021</span>, which is around <span class = "highlighted_good">18,000</span>. 
+          However, the number of deaths started to drop after that. After<span class = "highlighted_bad"> May 2022</span>, the number of deaths dropped till
+          <span class = "highlighted_bad"> below 4,000</span> till 24 September 2022. 
+        </p>
+      </div>
+      <div class="pure-u-1 pure-u-md-3-24"></div>
+  </div>
+  <!-- end pure grid group -->
+
+  <!-- pure grid group -->
+  <div class="pure-g">
+    <div class="pure-u-1-1">
+      <div id="vis4" class="vis-container-small" align="center"></div>
+    </div>
+  </div>
+  <!-- end pure grid group -->
+  
+
+  <!-- pure grid group -->
+  <div class="pure-g-small" id = "header">
+    <div class="pure-u-1 pure-u-md-3-24"></div>
+      <div class="pure-u-1 pure-u-md-18-24" id = "title">
+        <h2>Life Expectancy Distribution of Each Continent by 24 September 2022</h2>
+      </div>
+      <div class="pure-u-1 pure-u-md-3-24"></div>
+  </div>
+  <!-- end pure grid group -->
+
+  <!-- pure grid group -->
+  <div class="pure-g-small">
+    <div class="pure-u-1 pure-u-md-3-24"></div>
+      <div class="pure-u-1 pure-u-md-18-24" id = "title">
+          <p>
+            The violin plot displays the distribution of life expectancy of each continent. 
+            The long vertical black line in the middle represents interquartile range which are q1 and q3 
+            of the data statistic. Besides, the short horizontal black line represents the median. 
+            For each violin shape, the part which has large width is the data point that has higher probability 
+            to occur, on the other hand part with smaller width is data that has lower probability to occur. 
+          </p>
+          <p>
+            From the graph, we can see that<span class = "highlighted_good"> Europe</span> has the<span class = "highlighted_good"> highest distribution</span>
+             of life expectancy compared to other continents, while<span class = "highlighted_bad"> Africa</span> has the
+             <span class = "highlighted_bad"> lowest</span> life expectancy distribution. 
+          </p>
+      </div>
+      <div class="pure-u-1 pure-u-md-3-24"></div>
+  </div>
+  <!-- end pure grid group -->
 
     <!-- pure grid group -->
     <div class="pure-g">
-        <div class="pure-u-2-5">
-          <div id="vis4" class="vis-container"></div>
-        </div>
-        <div class="pure-u-1-5">
-          <div class="description description-right">
-            <p>The stream graph shows the new deaths each continent had per day from year 2020 to the latest date 
-                which is 24 September 2022. 
-                Continent statistic can be shown by using the filter selection. 
-                The small graph below can be highlighted to get a closer look to the data. 
-            </p>
-          </div>
-        </div>
-  
+      <div class="pure-u-1-1">
+        <div id="vis5" class="vis-container-center" align="center"></div>
       </div>
-      <!-- end pure grid group -->
+    </div>
+    <!-- end pure grid group -->
 
     <!-- pure grid group -->
-    <div class="pure-g">
-        <div class="pure-u-1-6">
-          <div class="description description-left">
-            <h2>Life Expectancy Distribution of Each Continent by 24 September 2022</h2>
-            <p>The violin plot display the distribution of life expectancy of each continent. 
-            </p>
-          </div>
-          <div class="pure-u-1-6">
-            <div id="vis5" class="vis-container"></div>
-          </div>
-        </div>
-  
+  <div class="pure-g-small" id = "header">
+    <div class="pure-u-1 pure-u-md-3-24"></div>
+      <div class="pure-u-1 pure-u-md-18-24" id = "title">
+        <h2>Gross Domestic Product per Capita by Country</h2>
       </div>
-      <!-- end pure grid group -->
+      <div class="pure-u-1 pure-u-md-3-24"></div>
+  </div>
+  <!-- end pure grid group -->
+
+  <!-- pure grid group -->
+  <div class="pure-g-small">
+    <div class="pure-u-1 pure-u-md-3-24"></div>
+      <div class="pure-u-1 pure-u-md-18-24" id = "title">
+        <p>The graph shows gross domestic product per capita of each country by 24 September 2022, each categorized into their specific continent. 
+          From the graph, it is observed that recently more countries in<span class = "highlighted_good"> Asia</span> has the <span class = "highlighted_good">highest</span> gross domestic product per capita.
+          The country that has highest GDP per capita is <span class = "highlighted_good">Qatar</span> in Asia which is around <span class = "highlighted_good">116,000</span>. 
+          Next follow by countries in Europe, North America, Oceania, South America, and<span class = "highlighted_bad"> lastly Africa</span>. 
+        </p>
+      </div>
+      <div class="pure-u-1 pure-u-md-3-24"></div>
+  </div>
+  <!-- end pure grid group -->
 
     <!-- pure grid group -->
-    <div class="pure-g">
-        <div class="pure-u-1-7">
-          <div class="description description-left">
-            <h2>Gross Domestic Product per Capita by Country</h2>
-            <p>The graph shows gdp per capita of each country, each categorized into their specific continent. 
-                Again continent can be filter out using the selection filter. 
-            </p>
-          </div>
-        </div>
-        <div class="pure-u-1-7">
-          <div id="vis6" class="vis-container"></div>
+    <div class="pure-g-small">
+        <div class="pure-u-1-1">
+          <div id="vis6" class="vis-container" align="center"></div>
         </div>
       </div>
       <!-- end pure grid group -->
