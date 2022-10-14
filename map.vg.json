@@ -69,7 +69,49 @@
                 },
             "mark": {"type": "geoshape", "fill": null, "stroke": "lightgrey", "opacity": 0.3}
             
-        }
+        },
+        {
+            "data": {
+                "url": "https://raw.githubusercontent.com/TohXiaoYing/FIT3179_DataVisProject2/main/data/world_country_and_usa_states_latitude_and_longitude_values.csv"
+              
+            },
+            "transform": [
+                {
+                "lookup": "country",
+                "from": {
+                    "data": {
+                        
+                        "url": "https://raw.githubusercontent.com/TohXiaoYing/FIT3179_DataVisProject2/main/data/owid_covid_country.csv"
+                    },
+                    "key": "location",
+                    "fields": ["total_cases_per_million", "location"]
+                    }
+                },
+                {
+                    "filter": "datum.total_cases_per_million >= 600000 || datum.total_cases_per_million <= 400 && datum.location != null"
+                }
+            ],
+            "encoding": {
+              "longitude": {
+                "field": "longitude",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "latitude",
+                "type": "quantitative"
+              }
+            },
+            "layer": [{
+              "mark": {
+                "type": "text",
+                "fontSize": 12,
+                "fontWeight": "bold"
+              },
+              "encoding": {
+                "text": {"field": "location", "type": "nominal"}
+              }
+            }]
+          }
     ],
     "config": {
         "view": {
